@@ -1,0 +1,91 @@
+this is an AeroHub script template. This is a free use and no need to credit Apollo Hub. Note: this is still an Apollo Hub property. But this is free to use. Respect for the property is still necessary. 
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+local Title = Instance.new("TextLabel")
+local MinimizeBtn = Instance.new("TextButton")
+
+-- Core Setup
+ScreenGui.Name = "CustomAeroMenu"
+ScreenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+-- Main Frame
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Main.BackgroundTransparency = 1 -- Start invisible
+Main.Position = UDim2.new(0.5, -200, 0.5, -150)
+Main.Size = UDim2.new(0, 400, 0, 300)
+Main.Active = true
+Main.Draggable = true
+Main.ClipsDescendants = true -- Important for the minimize effect
+
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = Main
+
+UIStroke.Parent = Main
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(0, 170, 255)
+UIStroke.Transparency = 1 -- Start invisible
+
+-- Title
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0, 15, 0, 10)
+Title.Size = UDim2.new(0, 200, 0, 30)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "SYSTEM_CONTROL"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 18
+Title.TextTransparency = 1
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Minimize Button
+MinimizeBtn.Name = "Minimize"
+MinimizeBtn.Parent = Main
+MinimizeBtn.BackgroundTransparency = 1
+MinimizeBtn.Position = UDim2.new(1, -35, 0, 10)
+MinimizeBtn.Size = UDim2.new(0, 25, 0, 25)
+MinimizeBtn.Font = Enum.Font.GothamBold
+MinimizeBtn.Text = "-"
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.TextSize = 20
+MinimizeBtn.TextTransparency = 1
+
+--- Logic ---
+
+local isMinimized = false
+local originalSize = UDim2.new(0, 400, 0, 300)
+local minimizedSize = UDim2.new(0, 400, 0, 45)
+
+MinimizeBtn.MouseButton1Click:Connect(function()
+	isMinimized = not isMinimized
+	local targetSize = isMinimized and minimizedSize or originalSize
+	
+	-- Animate the size change
+	TweenService:Create(Main, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = targetSize}):Play()
+	
+	-- Change button text
+	MinimizeBtn.Text = isMinimized and "+" or "-"
+end)
+
+-- 2 Second Intro Sequence
+task.spawn(function()
+	task.wait(0.5)
+	-- Fade in background and border
+	TweenService:Create(Main, TweenInfo.new(1), {BackgroundTransparency = 0.15}):Play()
+	TweenService:Create(UIStroke, TweenInfo.new(1), {Transparency = 0}):Play()
+	
+	task.wait(1) -- Wait for background to finish
+	
+	-- Fade in text elements
+	TweenService:Create(Title, TweenInfo.new(0.5), {TextTransparency = 0}):Play()
+	TweenService:Create(MinimizeBtn, TweenInfo.new(0.5), {TextTransparency = 0}):Play()
+end)

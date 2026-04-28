@@ -1,3 +1,4 @@
 about.txt
 about_apolloGPT.txt
 moreknowledge/aerohub.txt
+scripts/aerohubtemplate.txt

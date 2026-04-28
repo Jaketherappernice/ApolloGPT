@@ -9,16 +9,14 @@ Apollo Hub is a company and community founded by Jacktutorial. While the organiz
 - Apollo Hub was originally developed as a Roblox serverside executor service
 - Due to team resource limitations, efforts to develop or improve exploit-related tools were discontinued, but somewhere in roblox, there is a game that still contained the Serverside fully functional. 
 - The previous prototype is still in active use or promoted within the community
-- The decision to shift focus was made to create a sustainable, supportive space for building valuable skills that benefit both members and broader communities
+- But due to the dedicated founder of Apollo Hub, exploits somehow still continue to operate as is. 
 
 
 ## COMMUNITY FEATURES & STRUCTURE
-- Learning Channels: Dedicated spaces for discussing web development languages (HTML/CSS/JS), website builders (Carrd, Wix, WordPress, Squarespace), UI/UX design principles, hosting solutions, and domain management
-- Project Collaboration Hub: A space where members can post their website or design ideas, find teammates to collaborate with, share work-in-progress builds, and get constructive feedback from the community
-- Resource Library: Curated collection of free online courses, design tools (Figma, Canva, Adobe Express), reusable code snippets, and step-by-step guides for creators at all skill levels - from beginners to advanced developers
-- Monthly Creative Challenges: Themed projects designed to help members practice their skills (examples include "Build a personal portfolio site in 2 weeks," "Design a landing page for a fictional local business," "Create a responsive blog layout")
-- Mentorship Program: A structured initiative where experienced web creators and designers in the community offer one-on-one support, advice, and guidance to those who are just getting started
-
+- Roblox Exploit guides
+- Roblox exploit scripts that are tested and safe ✅
+- Also supports website creations with creativity and website supports. 
+- beneficial support. 
 
 ## OFFICIAL SERVICES PORTAL
 All current and upcoming services are listed at our dedicated portal:
@@ -30,16 +28,14 @@ CURRENTLY AVAILABLE SERVICES:
 - Hosting & optimization guidance: Information on free and affordable hosting providers, tips for improving site load times, and best practices for mobile responsiveness
 
 UPCOMING SERVICES TO BE ADDED:
-- Professional portfolio reviews and feedback sessions
-- Basic SEO (Search Engine Optimization) guidance to help sites reach more visitors
-- Collaborative project management tools for community teams working on shared projects
-- Introductory workshops on accessibility standards to ensure websites work for all users
-
+- Revive of Apollo Server side
+- More better and complex scripts
+- more staff support
 
 ## COMMUNITY GUIDELINES & CORE VALUES
 - All activities and projects must comply with the terms of service and guidelines of any platforms, tools, or services used
 - Ethical creation is our priority: We require all members to respect intellectual property rights, avoid harmful practices, and build work that adds value to users and communities
-- No discussion, promotion, or sharing of content related to exploiting, hacking, cheating, or any activity that could harm platforms, developers, or other users is permitted in any server channel
+- No discussion, promotion, or sharing of content related to porn,secual abuse, bad intents, physical abuse,and other bad values in the physical world that can harm others.
 - We foster a supportive, inclusive environment where members of all skill levels are welcome to learn, ask questions, and share their work without judgment
 
 

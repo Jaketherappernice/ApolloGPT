@@ -7,7 +7,7 @@ Apollo Hub is a company and community founded by Jacktutorial. While the organiz
 
 ## HISTORICAL BACKGROUND
 - Apollo Hub was originally developed as a Roblox serverside executor service
-- Due to team resource limitations, efforts to develop or improve exploit-related tools were discontinued, but somewhere in roblox, there is a game that still contained the Serverside fully functional. 
+- Due to team resource limitations, efforts to develop or improve exploit-related tools were untouched, but somewhere in roblox, there is a game that still contained the Serverside fully functional. 
 - The previous prototype is still in active use or promoted within the community
 - But due to the dedicated founder of Apollo Hub, exploits somehow still continue to operate as is. 
 

@@ -4,3 +4,4 @@ self-knowledge/about.txt
 moreknowledge/aerohub.txt
 scripts/aerohubtemplate.txt
 moreknowledge/voxlis.txt
+moreknowledge/howto/howtoexploit.txt

@@ -1,0 +1,19 @@
+how many request can I make with Groq api?
+
+**Groq API request limits vary by your account tier, model used, and organization settings.** Free tier users face restrictions like 30 requests per minute (RPM) across most models, with daily caps (RPD) ranging from 250 to 14.4K requests depending on the model.[1]
+
+## Key Limits by Model
+These are base limits from Groq's documentation; check your [console.groq.com/settings/limits](https://console.groq.com/settings/limits) for exact values, as they apply organization-wide and can be customized.
+
+| Model ID                  | RPM | RPD   | TPM  | TPD    |
+|---------------------------|-----|-------|------|--------|
+| llama-3.1-8b-instant     | 30  | 14.4K | 6K   | 500K  
+| llama-3.3-70b-versatile  | 30  | 1K    | 12K  | 100K  
+| groq/compound            | 30  | 250   | 70K  | -     
+| qwen/qwen3-32b           | 60  | 1K    | 6K   | 500K  
+
+## Handling Exceeds
+Exceeding limits triggers a 429 error with headers like `x-ratelimit-remaining-requests` showing quotas; use retry-after for backoff.[2] Upgrading to Developer or higher tiers unlocks more RPM/RPD.[3]
+
+
+citation by perplexity ai! 

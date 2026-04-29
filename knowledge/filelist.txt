@@ -7,4 +7,5 @@ moreknowledge/aerohub.txt
 apolloservices/serverside.txt
 scripts/aerohubtemplate.txt
 moreknowledge/voxlis.txt
+moreknowledge/remium.txt
 moreknowledge/howto/howtoexploit.txt

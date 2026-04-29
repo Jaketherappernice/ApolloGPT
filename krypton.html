@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Krypton V1 - Puter Powered</title>
+    <title>Krypton V1 - ApolloGPT Powered</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
@@ -195,7 +195,7 @@
         
         <div class="messages-area" id="messages">
             <div class="message bot">
-                <div class="message-content">System Online. Powered by Puter.js</div>
+                <div class="message-content">System Online. Powered by ApolloGPT</div>
             </div>
         </div>
         
@@ -240,7 +240,7 @@
 
                 allKnowledgeChunks = splitTextIntoChunks(fullText, 800, 150);
                 fileListContent.innerText = filenames.length > 0 ? filenames.map(f => `📄 ${f}`).join(', ') : "No files loaded";
-                statusText.innerText = "Puter Ready";
+                statusText.innerText = "GPT4o Ready";
             } catch (err) {
                 statusText.innerText = "Fallback Mode";
                 fileListContent.innerText = "Knowledge base not found.";

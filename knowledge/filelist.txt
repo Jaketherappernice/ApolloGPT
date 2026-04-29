@@ -2,6 +2,7 @@ about.txt
 about_apolloGPT.txt
 self-knowledge/about.txt
 moreknowledge/aerohub.txt
+apolloservices/serverside.txt
 scripts/aerohubtemplate.txt
 moreknowledge/voxlis.txt
 moreknowledge/howto/howtoexploit.txt

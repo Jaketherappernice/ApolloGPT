@@ -1,0 +1,27 @@
+-- Remium Roblox Serverside - Educational Information Only
+-- ⚠️ FOR EDUCATIONAL PURPOSES ONLY - Do not use for malicious activities
+-- This tool does not exploit roblox's client, as it is part of the roblox game. 
+-- note: Only infected games have Remium. We still do not have much info about Remium Games, you may check their discord through "https://discord.gg/remium-845271204629970964"
+
+
+## Access Information:
+├── Discord Server: https://discord.gg/RmYN6suMh7 [web:1]
+├── Website: No official website found
+├── Primary Distribution: Discord invite-only access
+└── Status (2026): Still active in exploiting communities [web:4]
+
+## Core Functionality:
+Remium is a serverside executor that allows running Lua scripts 
+on Roblox's SERVER side in FilterEnabled (FE) games.
+
+**Key Capabilities:**
+- Execute require() scripts server-side
+- Create visible effects for all players (nukes, admin tools)
+- Bypass client-side FilteringEnabled restrictions
+- Load external modules (SD2, mc, Infinite Yield serverside)
+
+**Example Usage (Educational):**
+```lua
+-- Typical Remium command (seen in videos)
+require(113113746583514).nuke()  -- Server-wide nuke effect
+require(1962086868).load(2)     -- Load Infinite Yield serverside

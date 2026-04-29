@@ -3,6 +3,7 @@ about_apolloGPT.txt
 self-knowledge/about.txt
 moreknowledge/deltaexploits.txt
 moreknowledge/avoidscams.txt
+apolloservices/apolloscripts.txt
 moreknowledge/aerohub.txt
 apolloservices/serverside.txt
 scripts/aerohubtemplate.txt

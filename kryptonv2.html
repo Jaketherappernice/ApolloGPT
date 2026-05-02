@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Krypton V1 - ApolloGPT Powered</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            height: 100vh;
+            height: -webkit-fill-available;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        /* Header */
+        .chat-header {
+            padding: 15px;
+            background: #000;
+            border-bottom: 2px solid #ff6600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title { color: #ff6600; font-size: 18px; font-weight: 900; text-shadow: 0 0 10px #ff6600; }
+        .chat-subtitle { color: #fff; font-size: 10px; opacity: 0.7; }
+
+        .chat-controls {
+            padding: 10px 15px;
+            background: #0a0a0a;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #modelSelect {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid #ff6600;
+            background: #000;
+            color: #fff;
+            font-family: inherit;
+            font-size: 12px;
+            outline: none;
+        }
+
+        #status {
+            font-size: 10px;
+            color: #ff6600;
+        }
+
+        .knowledge-panel {
+            padding: 10px 15px;
+            background: #0a0a0a;
+            border-bottom: 1px solid #333;
+            max-height: 60px;
+            overflow-y: auto;
+        }
+
+        #file-list-content {
+            font-size: 10px;
+            color: #fff;
+            opacity: 0.6;
+        }
+
+        /* Messages Area */
+        .messages-area {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #000;
+        }
+
+        .message { display: flex; width: 100%; }
+        .message.user { justify-content: flex-end; }
+        .message.bot { justify-content: flex-start; }
+        .message-content {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-content {
+            background: #ff6600;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .message.bot .message-content {
+            background: #111;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        /* Typing indicator */
+        .typing {
+            color: #ff6600;
+            font-size: 12px;
+            padding: 10px;
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 15px;
+            background: #000;
+            border-top: 2px solid #ff6600;
+        }
+
+        .input-group { display: flex; gap: 8px; }
+
+        #userInput {
+            flex: 1;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            font-family: inherit;
+            outline: none;
+            resize: none;
+            min-height: 45px;
+        }
+
+        #sendBtn {
+            padding: 0 20px;
+            border-radius: 5px;
+            border: none;
+            background: #ff6600;
+            color: #000;
+            font-weight: 900;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* Markdown styling */
+        .message.bot h1, .message.bot h2 { color: #ff6600; font-size: 1.1em; margin: 5px 0; }
+        .message.bot code { background: #222; color: #ff6600; padding: 2px 4px; }
+        .message.bot pre { background: #050505; padding: 10px; border: 1px solid #333; overflow-x: auto; margin: 8px 0; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-header">
+            <div>
+                <div class="chat-title">Krypton V1</div>
+                <div class="chat-subtitle">Puter AI Integration</div>
+            </div>
+        </div>
+        
+        <div class="chat-controls">
+            <select id="modelSelect">
+                <option value="gpt-4o">GPT-4o (Puter)</option>
+                <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
+                <option value="meta-llama-3-1-405b">Llama 3.1 405B</option>
+            </select>
+            <div id="status">Ready</div>
+        </div>
+        
+        <div class="knowledge-panel">
+            <div id="file-list-content">📂 Loading knowledge...</div>
+        </div>
+        
+        <div class="messages-area" id="messages">
+            <div class="message bot">
+                <div class="message-content">System Online. Powered by ApolloGPT</div>
+            </div>
+        </div>
+        
+        <div class="input-area">
+            <div class="input-group">
+                <textarea id="userInput" placeholder="Type a message..." rows="1"></textarea>
+                <button id="sendBtn">SEND</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messagesContainer = document.getElementById('messages');
+const sendButton = document.getElementById('sendBtn');
+const userInput = document.getElementById('userInput');
+const statusText = document.getElementById('status');
+const fileListContent = document.getElementById('file-list-content');
+const modelSelect = document.getElementById('modelSelect');
+
+// --- Configuration ---
+let chatHistory = [];
+const MAX_HISTORY = 10;
+const YT_API_KEY = "AIzaSyAcFOYceieFb_LPlffrtwdQwAfBbITeDSg"; // Your provided key
+
+let allKnowledgeChunks = [];
+const FOLDER_PATH = "knowledge/";
+const LIST_FILE = FOLDER_PATH + "filelist.txt";
+
+// --- YouTube Integration ---
+async function searchYouTube(query) {
+    try {
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=3&type=video&key=${YT_API_KEY}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.items && data.items.length > 0) {
+            return data.items.map(item => 
+                `Video: ${item.snippet.title} (Channel: ${item.snippet.channelTitle}) - https://www.youtube.com/watch?v=${item.id.videoId}`
+            ).join("\n");
+        }
+        return "";
+    } catch (err) {
+        console.error("YouTube search failed", err);
+        return "";
+    }
+}
+
+// --- DuckDuckGo Search Integration ---
+async function searchWeb(query) {
+    try {
+        const response = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&origin=*`);
+        const data = await response.json();
+        
+        let webContext = "";
+        if (data.AbstractText) {
+            webContext = `Web Result: ${data.AbstractText}`;
+        } else if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+            webContext = `Web Result: ${data.RelatedTopics[0].Text}`;
+        }
+        return webContext;
+    } catch (err) {
+        console.error("Search failed", err);
+        return "";
+    }
+}
+
+async function initKnowledge() {
+    try {
+        const resp = await fetch(LIST_FILE);
+        if (!resp.ok) throw new Error("No filelist.txt");
+        const listText = await resp.text();
+        const filenames = listText.split("\n").map(f => f.trim()).filter(f => f && !f.startsWith("#"));
+
+        let fullText = "";
+        for (const filename of filenames) {
+            try {
+                const res = await fetch(FOLDER_PATH + filename);
+                if (res.ok) {
+                    const content = await res.text();
+                    fullText += `\n[Source: ${filename}]\n${content}\n`;
+                }
+            } catch (e) { console.error("File load error", e); }
+        }
+
+        allKnowledgeChunks = splitTextIntoChunks(fullText, 800, 150);
+        fileListContent.innerText = filenames.length > 0 ? filenames.map(f => `📄 ${f}`).join(', ') : "No files loaded";
+        statusText.innerText = "System Online";
+    } catch (err) {
+        statusText.innerText = "Fallback Mode";
+        fileListContent.innerText = "Local knowledge base not found.";
+    }
+}
+
+function splitTextIntoChunks(text, size, overlap) {
+    const chunks = [];
+    let i = 0;
+    while (i < text.length) {
+        chunks.push(text.substring(i, i + size));
+        i += size - overlap;
+    }
+    return chunks;
+}
+
+function getRelevantContext(query) {
+    if (!allKnowledgeChunks.length) return "";
+    const words = query.toLowerCase().split(/\W+/).filter(w => w.length > 2);
+    const scored = allKnowledgeChunks.map(chunk => ({
+        text: chunk,
+        score: words.reduce((acc, word) => acc + (chunk.toLowerCase().includes(word) ? 1 : 0), 0)
+    })).sort((a, b) => b.score - a.score);
+    return scored.slice(0, 3).filter(i => i.score > 0).map(i => i.text).join("\n\n");
+}
+
+async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    userInput.value = '';
+    addMessage('user', text);
+    
+    chatHistory.push({ role: "user", content: text });
+
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'typing';
+    typingDiv.innerText = 'Jarvis is searching & thinking...';
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Execute searches in parallel
+    const [localContext, webContext, youtubeContext] = await Promise.all([
+        getRelevantContext(text),
+        searchWeb(text),
+        searchYouTube(text)
+    ]);
+
+    const historyContext = chatHistory
+        .slice(-MAX_HISTORY)
+        .map(msg => `${msg.role === 'user' ? 'User' : 'Jarvis'}: ${msg.content}`)
+        .join("\n");
+
+    const systemPrompt = `You are Jarvis, an advanced AI. 
+    Local Context: ${localContext || "None"}
+    Web Context: ${webContext || "No live web data found."}
+    YouTube Context: ${youtubeContext || "No relevant videos found."}
+    
+    Conversation History:
+    ${historyContext}
+
+    Instructions: Prioritize local context. Mention relevant YouTube videos if applicable. Maintain continuity and answer concisely.`;
+
+    try {
+        const response = await puter.ai.chat(
+            `${systemPrompt}\n\nJarvis:`,
+            { model: modelSelect.value, stream: false }
+        );
+
+        const botResponse = response.toString();
+        typingDiv.remove();
+        addMessage('bot', botResponse);
+
+        chatHistory.push({ role: "assistant", content: botResponse });
+
+        if (chatHistory.length > MAX_HISTORY * 2) {
+            chatHistory = chatHistory.slice(-MAX_HISTORY * 2);
+        }
+
+    } catch (err) {
+        typingDiv.remove();
+        addMessage('bot', "❌ Error: " + err.message);
+    }
+}
+
+function addMessage(role, content) {
+    const div = document.createElement('div');
+    div.className = `message ${role}`;
+    const contentWrapper = document.createElement('div');
+    contentWrapper.className = 'message-content';
+    contentWrapper.innerHTML = (role === 'bot' && typeof marked !== 'undefined') ? marked.parse(content) : content;
+    div.appendChild(contentWrapper);
+    messagesContainer.appendChild(div);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+sendButton.onclick = sendMessage;
+userInput.onkeydown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } };
+
+window.onload = initKnowledge;
+
+    </script>
+</body>
+</html>

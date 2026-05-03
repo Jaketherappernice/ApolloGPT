@@ -1,0 +1,33 @@
+Raw Text Block 9: HTML + CSS + JS + Tailwind Integration Guide
+
+HTML Structure Core:
+- Root: <!DOCTYPE html><html><head><title></title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body></body></html>
+- Semantics: <header>, <nav>, <main>, <section>, <article>, <aside>, <footer>
+- Elements: <h1-h6>, <p>, <a href="">, <img src="" alt="">, <ul><li>, <ol><li>, <table><tr><th><td>, <form><input type="text/email/password"><button>
+- Attributes: id, class, style, data-*, aria-label for accessibility
+
+CSS Basics + Tailwind:
+- Link: <link rel="stylesheet" href="style.css"> or Tailwind CDN: <script src="https://cdn.tailwindcss.com"></script>
+- Selectors: tag {}, .class {}, #id {}, [attr], :hover, @media (max-width: 768px) {}
+- Properties: color, background-color, font-*, margin/m-*, padding/p-*, border, display: block/inline/flex/grid, position: relative/absolute/fixed
+- Tailwind Utilities: Layout - flex, grid, container, col-span-*, row-span-*; Spacing - p-4, m-auto, space-x-4; Typography - text-xl font-bold; Colors - bg-red-500 text-white; Responsive - sm:p-2 md:flex lg:text-2xl; States - hover:scale-105 focus:ring-2 active:bg-opacity-75; Dark - dark:bg-gray-900
+
+JavaScript Essentials:
+- Embed: <script> or external <script src="app.js"></script>
+- Variables: let x = 5; const PI = 3.14;
+- Functions: function add(a,b){return a+b;} or const multiply = (a,b) => a*b;
+- Control Flow: if(cond){} else {}, for(let i=0;i<10;i++), while(cond), switch(val){case 1:}
+- Arrays/Objects: let arr = [1,'two']; arr.push(3); let obj = {key:'val'}; obj.method = ()=>{};
+- DOM: document.querySelector('.class'), .getElementById('id'), elem.innerHTML = '', elem.style.color='red', elem.classList.add/remove/toggle, elem.addEventListener('click', func)
+- Events: click, submit, keydown, load, resize
+- ES6+: arrow funcs, destructuring {a,b}=obj, spread ...arr, template `${name} is ${age}`
+
+Integration Best Practices:
+- Responsive first: Mobile-first with Tailwind prefixes sm/md/lg/xl/2xl
+- Accessibility: Semantic HTML, alt texts, keyboard nav, ARIA
+- Performance: Minify CSS/JS, lazy load images loading="lazy"
+- Example Snippet: <div class="flex flex-col md:flex-row gap-4 p-6 bg-white shadow-lg rounded-xl"><h2 class="text-2xl font-bold">Title</h2><button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">Click</button></div>
+- JS Example: document.querySelector('button').addEventListener('click', () => alert('Tailwind + JS works!'));
+- Common Pitfalls: Over-specificity in CSS, !important abuse, forgetting event.preventDefault() in forms
+
+For RAG: Embed these chunks for queries like "responsive navbar Tailwind" or "JS form validation".

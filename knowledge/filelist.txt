@@ -2,6 +2,7 @@ about.txt
 about_apolloGPT.txt
 self-knowledge/about.txt
 moreknowledge/deltaexploits.txt
+coding/tailwind.txt
 moreknowledge/avoidscams.txt
 moreknowledge/aerohub.txt
 apolloservices/serverside.txt

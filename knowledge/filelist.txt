@@ -3,6 +3,7 @@ about_apolloGPT.txt
 self-knowledge/about.txt
 moreknowledge/deltaexploits.txt
 coding/tailwind.txt
+coding/training1.txt
 coding/blackbox.txt
 moreknowledge/avoidscams.txt
 moreknowledge/aerohub.txt

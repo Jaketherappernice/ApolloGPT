@@ -1,0 +1,50 @@
+Raw Text Block 13: UI Corners (Border Radius) & Box Shadows Mastery - Tailwind + CSS
+
+Core Concepts:
+- Border Radius: Rounds corners for modern, soft UIs. Reduces harsh edges, improves tactile feel. Scale: 0 (sharp), sm (4px), md (8px), lg (12px), xl (16px), 2xl (24px), 3xl (32px), full (9999px pill).
+- Box Shadows: Adds depth, elevation, focus. Mimics light/material design. Layers: sm (subtle), DEFAULT (standard), md (elevated), lg (prominent), xl (heavy), 2xl (modal), inner (inset).
+
+Tailwind Classes:
+- Radius: rounded-none, rounded-sm, rounded, rounded-md, rounded-lg, rounded-xl, rounded-2xl, rounded-3xl, rounded-full
+  - Sides: rounded-t/l/r/b-{size} (top/left/right/bottom), rounded-tl/tr/br/bl-{size}
+  - Arbitrary: rounded-[10px], rounded-[50%]
+- Shadows: shadow-sm, shadow, shadow-md, shadow-lg, shadow-xl, shadow-2xl, shadow-inner, shadow-none
+  - Ring (outline shadow): ring, ring-1/2/4/8, ring-{color}-500, ring-offset-2
+  - Arbitrary: shadow-[0_10px_20px_rgba(0,0,0,0.1)]
+
+CSS Native:
+- Radius: border-radius: 8px; border-top-left-radius: 12px; border-radius: 50%;
+- Shadows: box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* Tailwind md equiv */
+  - Multi-layers: box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06); /* sm */
+  - Inset: box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+  - Elevation Scale (Material-like): 0dp (none), 2dp (sm), 4dp (md), 8dp (lg), 16dp (xl)
+
+Design Best Practices (2026):
+- Corners: 
+  - Cards/Buttons: rounded-lg or xl (12-16px) - friendly, modern.
+  - Modals/Popovers: rounded-2xl (24px) - prominent.
+  - Images/Avatars: rounded-full (pill/circle).
+  - Avoid over-rounding (>32px) on large elements - looks cartoonish.
+  - Consistency: Use design tokens, e.g., $radius-md: 12px;
+- Shadows:
+  - Cards: shadow-md/lg for lift.
+  - Buttons: shadow-sm hover:shadow-md (interactive depth).
+  - Focus: ring-2 ring-blue-500 ring-offset-2 (accessibility).
+  - Dark Mode: shadow-lg/gray-900 shadow-xl/dark:gray-700
+  - Performance: Hardware accel with backdrop-filter: blur if needed; limit layers.
+- Combinations: .bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-200
+- Responsive: md:rounded-2xl lg:shadow-2xl
+
+Examples:
+- Card: <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all">Content</div>
+- Button: <button class="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:shadow-lg active:shadow-sm transform active:scale-95 transition-all">Action</button>
+- Avatar: <img class="w-12 h-12 rounded-full shadow-md" src="https://picsum.photos/seed/avatar/48/48">
+- Modal: <div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4"><div class="bg-white rounded-2xl shadow-2xl max-w-md mx-auto max-h-[90vh] overflow-y-auto">...</div></div>
+
+Common Pitfalls:
+- Too sharp (none) = dated; too round/full everywhere = playful/childish.
+- Flat shadows = amateur; mismatched radius/shadow scale = inconsistent.
+- Mobile: Reduce shadows (shadow-sm) for perf; keep radius consistent.
+- Test: Chrome DevTools device emulation, Lighthouse accessibility.
+
+RAG Rule: In frontend code, default cards to rounded-lg shadow-md; buttons rounded-lg shadow-sm hover:shadow-md; always pair radius+shadow for depth. Use example images for visual elements.

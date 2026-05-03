@@ -1,0 +1,46 @@
+Raw Text Block 11: BlackBox AI Frontend Training - Best Designs & Placeholders
+
+BlackBox AI Frontend Skill Instructions (Adapted for RAG):
+- Focus: React/TS components, Tailwind styling, mobile-first, accessible UIs.
+- Principles: Utility-first Tailwind, semantic HTML, proper typing, small components (<200 lines), CSS modules if needed, unit tests.
+- Component Structure: interface Props { ... }; const Component: React.FC<Props> = ({}) => { return <div className="...">...</div>; };
+- State: useState, useCallback, useMemo for perf.
+- Example Button: interface ButtonProps { label: string; onClick: () => void; variant?: 'primary'|'secondary'; } const Button: React.FC<ButtonProps> = ({label, onClick, variant='primary'}) => <button className={`px-4 py-2 rounded ${variant === 'primary' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-300'}`} onClick={onClick}>{label}</button>;
+
+2026 Web Design Standards & Best Practices:
+- Mobile-First: Design for mobile (60%+ traffic), then scale up. Large tap targets (48x48px min), vertical flow, thumb nav, low cognitive load.
+- Hierarchy: Size/color/position for importance. Clear nav menus reflecting user paths.
+- Responsive: Flexible grids, fluid images, media queries or Tailwind sm/md/lg prefixes.
+- Accessibility (WCAG): Semantic HTML, alt texts, keyboard nav, ARIA, contrast ratios >4.5:1.
+- Performance: Lazy load images (loading="lazy"), minify, purge Tailwind unused classes.
+- Consistency: Design tokens - spacing (0,4,8,16px scale), typography (text-xs to 6xl), colors (semantic: primary, success, danger).
+- Interactions: Hover/focus/transition durations (200ms), micro-animations for feedback.
+
+Well-Made UI Design Examples (Inspirational Patterns):
+- Minimalism: Zara - Muted palette, whitespace, product-focused, adaptive responsive.
+- Icons/Clarity: Blinkist - Consistent icons, uncluttered layout.
+- Sector Solutions: Zoom - Segmented info, easy decision-making.
+- E-commerce: Spotahome - Heatmaps/A-B tested, iterative UI.
+- Patterns: Grid layouts (grid-cols-1 md:grid-cols-3 gap-4), hero sections (h-screen flex items-center), cards (bg-white shadow-lg rounded-xl p-6).
+
+Tailwind Best Practices:
+- Layout: .container.mx-auto .grid .flex .gap-4
+- Responsive: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+- States: hover:bg-opacity-75 focus:ring-2 active:scale-95
+- Custom: @layer components, utilities { ... }
+- Avoid: Arbitrary values often (@apply sparingly), over-nesting.
+- Dark Mode: dark:bg-gray-900 dark:text-white
+- Checklist: Mobile-first? Accessible? Consistent scale? Optimized bundle?
+
+Image Placeholder Rule:
+- NEVER leave empty placeholders. ALWAYS use example images from reliable services.
+- Services: 
+  - Unsplash: https://source.unsplash.com/random/800x600/?nature (seeded: /random/800x600/?sig=123)
+  - Picsum: https://picsum.photos/800/600 (seeded: https://picsum.photos/seed/picsum/800/600)
+  - PlaceIMG: https://via.placeholder.com/800x600/cccccc/666666?text=Image
+  - LoremFlickr: https://loremflickr.com/800/600/dog (themed)
+- Best: HTTPS, CDN, seeded for consistency. Replace with real assets in prod.
+- HTML: <img src="https://picsum.photos/seed/product/400/300" alt="Product example" class="w-full h-48 object-cover rounded" loading="lazy">
+- Rule: If design has [image:x] or placeholder, generate <img src="https://picsum.photos/seed/demo/width/height" alt="Descriptive alt" ...>
+
+RAG Prompt Integration: When generating frontend code, apply BlackBox-style skills: mobile-first Tailwind, accessible semantics, example images for all visuals. Prioritize conversions via clear CTAs, minimal load.
